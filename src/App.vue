@@ -1,6 +1,7 @@
 <script setup>
 import { ref } from 'vue'
 import Counter from '@/components/Counter.vue'
+import TodoUtility from '@/components/TodoUtility.vue'
 import CounterPro from '@/components/CounterPro.vue'
 import Tests from '@/components/Tests.vue'
 import Tests2 from '@/components/Tests2.vue'
@@ -15,6 +16,8 @@ const counterValue = ref(0)
 </script>
 
 <template>
+  <TodoUtility />
+  <hr />
   <Bindings />
   <hr />
   <Counter
