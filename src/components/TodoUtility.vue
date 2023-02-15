@@ -1,13 +1,13 @@
 <script setup>
-import { ref, computed, onMounted, onUnmounted } from 'vue'
-import TodoList from './TodoList.vue';
+import { storeToRefs } from 'pinia'
+import { onMounted } from 'vue'
+import { useTodoStore } from '@/stores/todo'
+import TodoList from './TodoList.vue'
 
-const items = ref([])
-const completedItems = computed(() => items.value.filter((item) => item.completed))
-const todoItems = computed(() => items.value.filter((item) => !item.completed))
+const todoStore = useTodoStore()
+const { items, completedItems, todoItems } = storeToRefs(todoStore)
 
 onMounted(() => {
-  console.log('Todo Utility mounted')
   items.value = [
     { id: 1, text: 'pane', completed: false },
     { id: 2, text: 'olio', completed: true },
@@ -16,13 +16,9 @@ onMounted(() => {
     { id: 5, text: 'burro', completed: false },
   ]
 })
-onUnmounted(() => {
-  console.log('Todo Utility unMounted')
-})
 
 function handleSwitchTodo({ id, completed }) {
-  const item = items.value.find((item) => item.id === id)
-  item.completed = completed
+  todoStore.switchTodo(id, completed)
 }
 </script>
 
