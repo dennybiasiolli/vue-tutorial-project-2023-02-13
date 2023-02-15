@@ -1,15 +1,17 @@
 <script setup>
-import { computed } from 'vue'
-
 const props = defineProps({
   modelValue: {
     type: Number,
     required: true,
-  }
+  },
+  isEven: Boolean,
 })
-const emit = defineEmits(['update:modelValue'])
-
-const isEven = computed(() => props.modelValue % 2 === 0)
+const emit = defineEmits([
+  'update:modelValue',
+  'increment',
+  'multiply',
+  'reset',
+])
 
 function increment(valore) {
   emit('update:modelValue', props.modelValue + valore)
@@ -30,7 +32,7 @@ const reset = () => {
     Counter is: {{ modelValue }}
   </div>
   <div>
-    Is Even: {{ isEven }}
+    Is Even: {{ props.isEven }}
   </div>
   <div>
     <button @click="increment(1)">+1</button>

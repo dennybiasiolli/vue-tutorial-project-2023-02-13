@@ -1,25 +1,23 @@
 <script setup>
-import { ref } from 'vue';
+import { storeToRefs } from 'pinia'
 import Counter from '@/components/Counter.vue'
 import CounterPro from '@/components/CounterPro.vue'
+import { useCounterStore } from '@/stores/counter'
 
-const counterValue = ref(0)
-function handleCounterChanged(valore) {
-  console.log('Il contatore è cambiato:', valore)
-}
+const counter = useCounterStore()
+const { count, isEven } = storeToRefs(counter)
 </script>
 
 <template>
-  <Counter
-    :startValue="123"
-    @counterChanged="handleCounterChanged($event)"
-  />
+  <Counter />
 
   <CounterPro
-    v-model="counterValue"
+    v-model="count"
+    :isEven="isEven"
   />
   <CounterPro
-    :modelValue="counterValue"
-    @update:modelValue="newValue => counterValue = newValue"
+    :modelValue="count"
+    :isEven="isEven"
+    @update:modelValue="newValue => count = newValue"
   />
 </template>
