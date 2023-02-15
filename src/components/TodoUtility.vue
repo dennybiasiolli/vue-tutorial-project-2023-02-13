@@ -1,5 +1,5 @@
 <script setup>
-import { ref, computed, onMounted } from 'vue'
+import { ref, computed, onMounted, onUnmounted } from 'vue'
 import TodoList from './TodoList.vue';
 
 const items = ref([])
@@ -7,6 +7,7 @@ const completedItems = computed(() => items.value.filter((item) => item.complete
 const todoItems = computed(() => items.value.filter((item) => !item.completed))
 
 onMounted(() => {
+  console.log('Todo Utility mounted')
   items.value = [
     { id: 1, text: 'pane', completed: false },
     { id: 2, text: 'olio', completed: true },
@@ -14,6 +15,9 @@ onMounted(() => {
     { id: 4, text: 'farina', completed: true },
     { id: 5, text: 'burro', completed: false },
   ]
+})
+onUnmounted(() => {
+  console.log('Todo Utility unMounted')
 })
 
 function handleSwitchTodo({ id, completed }) {
