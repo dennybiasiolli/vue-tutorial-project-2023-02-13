@@ -11,6 +11,7 @@ import Form3 from '@/components/Form3.vue'
 import Form4 from '@/components/Form4.vue'
 import HomePage from '@/components/HomePage.vue'
 import NotFound from '@/components/NotFound.vue'
+import Products from '@/components/Products.vue'
 import Tests from '@/components/Tests.vue'
 import Tests2 from '@/components/Tests2.vue'
 import Tests3 from '@/components/Tests3.vue'
@@ -71,6 +72,11 @@ export const routes = [
     path: '/form4',
     name: 'form4',
     component: Form4,
+  },
+  {
+    path: '/products',
+    name: 'products',
+    component: Products,
   },
   {
     path: '/:pathMatch(.*)*',

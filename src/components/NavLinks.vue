@@ -27,6 +27,8 @@ const hasTodoItems = computed(() => todoItems.value.length > 0)
     <span v-if="hasTodoItems"> ({{ todoItems.length }})</span>
   </RouterLink>
   <br />
+  <RouterLink :to="{ name: 'products' }">Products</RouterLink>
+  |
   <RouterLink :to="{ name: 'form1' }">Form 1</RouterLink>
   |
   <RouterLink :to="{ name: 'form2' }">Form 2</RouterLink>
