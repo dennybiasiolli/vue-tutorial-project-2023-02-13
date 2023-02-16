@@ -1,4 +1,5 @@
 import { createApp } from 'vue'
+import '@/plugins/axios'
 import { router } from '@/router'
 import { pinia } from '@/stores'
 import App from './App.vue'
