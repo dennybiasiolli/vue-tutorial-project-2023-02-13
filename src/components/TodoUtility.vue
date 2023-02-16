@@ -26,11 +26,13 @@ function handleSwitchTodo({ id, completed }) {
   <h2>Todo Utility</h2>
 
   <TodoList
+    v-if="todoItems.length > 0"
     title="To-do items"
     :items="todoItems"
     @switch-completed-todo="handleSwitchTodo"
   />
   <TodoList
+    v-if="completedItems.length > 0"
     title="Completed items"
     :items="completedItems"
     @switch-completed-todo="handleSwitchTodo"
