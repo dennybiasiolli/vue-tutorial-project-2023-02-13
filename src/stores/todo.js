@@ -8,8 +8,11 @@ export const useTodoStore = defineStore('todo', {
     todoItems: (state) => state.items.filter((item) => !item.completed),
   },
   actions: {
-    addTodo(text) {
-      console.log('addTodo', text)
+    async addTodo(text) {
+      try {
+        await axios.post('/todos', { text })
+        this.getTodoItems()
+      } catch (error) { }
     },
     async getTodoItems() {
       try {
