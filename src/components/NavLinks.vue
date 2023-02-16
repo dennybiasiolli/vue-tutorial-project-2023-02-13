@@ -26,4 +26,12 @@ const hasTodoItems = computed(() => todoItems.value.length > 0)
     To-do Utility
     <span v-if="hasTodoItems"> ({{ todoItems.length }})</span>
   </RouterLink>
+  <br />
+  <RouterLink :to="{ name: 'form1' }">Form 1</RouterLink>
+  |
+  <RouterLink :to="{ name: 'form2' }">Form 2</RouterLink>
+  |
+  <RouterLink :to="{ name: 'form3' }">Form 3</RouterLink>
+  |
+  <RouterLink :to="{ name: 'form4' }">Form 4</RouterLink>
 </template>
