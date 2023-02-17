@@ -5,7 +5,7 @@ defineProps({
   title: String,
   items: Array,
 })
-defineEmits(['switchCompletedTodo'])
+defineEmits(['switchCompletedTodo', 'changeTodoText'])
 </script>
 
 <template>
@@ -20,6 +20,7 @@ defineEmits(['switchCompletedTodo'])
         :text="item.text"
         :completed="item.completed"
         @change="$emit('switchCompletedTodo', { id: item.id, completed: $event })"
+        @text-changed="$emit('changeTodoText', { id: item.id, text: $event })"
       />
     </li>
   </ul>

@@ -6,7 +6,7 @@ import TodoList from './TodoList.vue'
 
 const todoStore = useTodoStore()
 const { completedItems, todoItems } = storeToRefs(todoStore)
-const { addTodo, getTodoItems, switchTodo } = todoStore
+const { addTodo, getTodoItems, switchTodo, updateTodo } = todoStore
 
 const formValid = ref(false)
 const itemText = ref('')
@@ -17,6 +17,10 @@ onMounted(() => {
 
 function handleSwitchTodo({ id, completed }) {
   switchTodo(id, completed)
+}
+
+function handleUpdateTodo({ id, text }) {
+  updateTodo(id, text)
 }
 
 function validateForm() {
@@ -46,11 +50,13 @@ watch(itemText, () => {
     title="To-do items"
     :items="todoItems"
     @switch-completed-todo="handleSwitchTodo"
+    @change-todo-text="handleUpdateTodo"
   />
   <TodoList
     v-if="completedItems.length > 0"
     title="Completed items"
     :items="completedItems"
     @switch-completed-todo="handleSwitchTodo"
+    @change-todo-text="handleUpdateTodo"
   />
 </template>
