@@ -6,7 +6,7 @@ import TodoList from './TodoList.vue'
 
 const todoStore = useTodoStore()
 const { completedItems, todoItems } = storeToRefs(todoStore)
-const { addTodo, getTodoItems, switchTodo, updateTodo } = todoStore
+const { addTodo, deleteTodo, getTodoItems, switchTodo, updateTodo } = todoStore
 
 const formValid = ref(false)
 const itemText = ref('')
@@ -51,6 +51,7 @@ watch(itemText, () => {
     :items="todoItems"
     @switch-completed-todo="handleSwitchTodo"
     @change-todo-text="handleUpdateTodo"
+    @delete-todo-item="deleteTodo"
   />
   <TodoList
     v-if="completedItems.length > 0"
@@ -58,5 +59,6 @@ watch(itemText, () => {
     :items="completedItems"
     @switch-completed-todo="handleSwitchTodo"
     @change-todo-text="handleUpdateTodo"
+    @delete-todo-item="deleteTodo"
   />
 </template>

@@ -26,17 +26,19 @@ export const useTodoStore = defineStore('todo', {
       try {
         await axios.patch(`/todos/${id}`, { completed })
         this.getTodoItems()
-      } catch {
-        this.items = []
-      }
+      } catch { }
     },
     async updateTodo(id, text) {
       try {
         await axios.patch(`/todos/${id}`, { text })
         this.getTodoItems()
-      } catch {
-        this.items = []
-      }
+      } catch { }
+    },
+    async deleteTodo(id) {
+      try {
+        await axios.delete(`/todos/${id}`)
+        this.getTodoItems()
+      } catch { }
     },
   },
 })

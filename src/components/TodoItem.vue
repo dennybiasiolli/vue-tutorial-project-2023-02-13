@@ -5,7 +5,7 @@ const props = defineProps({
   text: String,
   completed: Boolean,
 })
-const emit = defineEmits(['change', 'textChanged'])
+const emit = defineEmits(['change', 'textChanged', 'delete'])
 
 const showForm = ref(false)
 const formValid = ref(false)
@@ -34,6 +34,7 @@ watch(innerText, () => {
   />
   {{ text }}
   <button v-if="!showForm" @click="handleChangeClick">Change</button>
+  <button v-if="!showForm" @click="$emit('delete')">Delete</button>
   <form v-show="showForm">
     <input type="text" v-model="innerText" />
     <button type="button" @click="showForm = false">Cancel</button>
