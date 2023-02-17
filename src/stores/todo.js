@@ -22,9 +22,13 @@ export const useTodoStore = defineStore('todo', {
         this.items = []
       }
     },
-    switchTodo(id, completed) {
-      const item = this.items.find((item) => item.id === id)
-      item.completed = completed
+    async switchTodo(id, completed) {
+      try {
+        await axios.patch(`/todos/${id}`, { completed })
+        this.getTodoItems()
+      } catch {
+        this.items = []
+      }
     },
   },
 })
